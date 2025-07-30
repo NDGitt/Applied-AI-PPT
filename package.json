@@ -1,0 +1,22 @@
+{
+  "name": "applied-ai-presentation",
+  "version": "1.0.0",
+  "description": "Applied AI for Startup Founders Presentation Viewer",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "presentation",
+    "ai",
+    "haas",
+    "berkeley"
+  ],
+  "author": "Omri Even-tov & Alex Zekoff",
+  "license": "MIT",
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^24.11.2"
+  }
+}

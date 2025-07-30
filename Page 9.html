@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Let's Launch This Together</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .berkeley-blue {
+            color: #003262;
+        }
+        .berkeley-gold {
+            color: #FDB515;
+        }
+        .bg-berkeley-blue {
+            background-color: #003262;
+        }
+        .bg-berkeley-gold {
+            background-color: #FDB515;
+        }
+        .action-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        .action-icon {
+            color: #FDB515;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            width: 2rem;
+            text-align: center;
+        }
+        .action-content {
+            flex-grow: 1;
+        }
+        .image-container {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: rgba(0, 50, 98, 0.05);
+        }
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background-color: rgba(0, 50, 98, 0.7);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="w-full min-h-720px bg-white relative overflow-hidden" style="width: 1280px; min-height: 720px;">
+        <!-- Left Border Accent -->
+        <div class="absolute left-0 top-0 bottom-0 bg-berkeley-blue" style="width: 12px;"></div>
+        
+        <!-- Top Logos -->
+        <div class="absolute top-6 right-8">
+            <img src="https://mbagradschools.com/wp-content/uploads/2024/02/Walter-A.-Haas-School-of-Business-logo-1024x880.png.webp" alt="Haas School of Business Logo" class="h-20">
+        </div>
+        
+        <!-- Content Container -->
+        <div class="flex flex-col h-full px-24 py-16">
+            <!-- Title Section -->
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold berkeley-blue pb-2">Let's Launch This Together</h1>
+                <div class="w-16 h-1 bg-berkeley-gold"></div>
+            </div>
+            
+            <!-- Main Content - Two Columns -->
+            <div class="flex flex-grow space-x-12">
+                <!-- Left Column - Action Items -->
+                <div class="w-1/2">
+                    <h2 class="text-2xl font-semibold berkeley-blue mb-6">Next Steps</h2>
+                    
+                    <div class="action-item">
+                        <div class="action-icon text-3xl">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="text-xl font-semibold berkeley-blue">Review full syllabus & logistics</h3>
+                            <p class="text-gray-700">Complete course framework, weekly plan, and required resources for final approval</p>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon text-3xl">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="text-xl font-semibold berkeley-blue">Plan cross-departmental coordination</h3>
+                            <p class="text-gray-700">Establish joint governance with Berkeley Engineering to ensure seamless integration</p>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon text-3xl">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="text-xl font-semibold berkeley-blue">Begin outreach to industry partners</h3>
+                            <p class="text-gray-700">Secure mentors, guest speakers, and venture partners to build robust ecosystem</p>
+                        </div>
+                    </div>
+                    
+                    <div class="action-item">
+                        <div class="action-icon text-3xl">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <div class="action-content">
+                            <h3 class="text-xl font-semibold berkeley-blue">Course complements LLP rather than competing with it</h3>
+                            <p class="text-gray-700">By embedding AI product builds, toolchain fluency, and mentor-led prototyping.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-gray-50 p-4 rounded-lg border-l-4 border-berkeley-gold">
+                        <p class="text-lg"><span class="font-semibold berkeley-blue">Target Launch:</span> Spring Semester 2026</p>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Visual Elements -->
+                <div class="w-1/2">
+                    <div class="image-container">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Student team presenting" class="w-full h-full object-cover">
+                        <div class="image-overlay">
+                            <p class="font-semibold">Creating the next generation of AI-native entrepreneurs</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center items-center mt-6">
+                        <div class="w-24 h-24 rounded-full bg-berkeley-blue flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-white text-3xl"></i>
+                        </div>
+                        <div class="mx-4">
+                            <i class="fas fa-plus text-2xl berkeley-gold"></i>
+                        </div>
+                        <div class="w-24 h-24 rounded-full bg-berkeley-gold flex items-center justify-center">
+                            <i class="fas fa-robot text-white text-3xl"></i>
+                        </div>
+                        <div class="mx-4">
+                            <i class="fas fa-equals text-2xl berkeley-blue"></i>
+                        </div>
+                        <div class="w-24 h-24 rounded-full bg-gray-100 border-4 border-berkeley-blue flex items-center justify-center">
+                            <i class="fas fa-rocket berkeley-gold text-3xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="mt-8 pt-4 border-t border-gray-200 flex justify-between text-sm text-gray-500">
+                <div>Applied AI for Startup Founders at Haas</div>
+                <div>9</div>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute left-12 right-0 bottom-0 bg-berkeley-gold" style="height: 6px;"></div>
+    </div>
+</body>
+</html>

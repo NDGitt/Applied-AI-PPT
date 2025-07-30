@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applied AI Presentation Viewer</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        .presentation-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        
+        .controls {
+            background-color: #003262;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            background-color: #FDB515;
+            color: #003262;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        
+        .nav-btn:hover {
+            background-color: #e6a800;
+        }
+        
+        .nav-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .slide-info {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .export-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        
+        .export-btn:hover {
+            background-color: #218838;
+        }
+        
+        .slide-frame {
+            flex: 1;
+            border: none;
+            background-color: white;
+        }
+        
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            font-size: 18px;
+            color: #666;
+        }
+        
+        .slide-counter {
+            font-size: 14px;
+            color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="controls">
+            <div class="nav-buttons">
+                <button class="nav-btn" id="prevBtn" onclick="previousSlide()">← Previous</button>
+                <button class="nav-btn" id="nextBtn" onclick="nextSlide()">Next →</button>
+            </div>
+            
+            <div class="slide-info">
+                <span id="slideTitle">Loading...</span>
+                <div class="slide-counter">
+                    <span id="currentSlide">1</span> of <span id="totalSlides">10</span>
+                </div>
+            </div>
+            
+            <div class="nav-buttons">
+                <button class="export-btn" onclick="exportToPDF()">Export to PDF</button>
+            </div>
+        </div>
+        
+        <iframe id="slideFrame" class="slide-frame" src="Page 1.html"></iframe>
+    </div>
+
+    <script>
+        const slides = [
+            { file: 'Page 1.html', title: 'Applied AI for Startup Founders at Haas' },
+            { file: 'Page 2.html', title: 'Why Practical AI Entrepreneurship Now?' },
+            { file: 'Page 3.html', title: 'Slide 3' },
+            { file: 'Page 4.html', title: 'Slide 4' },
+            { file: 'Page 5.html', title: 'Slide 5' },
+            { file: 'Page 6.html', title: 'Slide 6' },
+            { file: 'Page 7.html', title: 'Slide 7' },
+            { file: 'Page 8.html', title: 'Slide 8' },
+            { file: 'Page 9.html', title: 'Slide 9' },
+            { file: 'Page 10.html', title: 'Slide 10' },
+            { file: 'Page 12.html', title: 'Slide 11' },
+            { file: 'Page11.html', title: 'Slide 12' }
+        ];
+        
+        let currentSlideIndex = 0;
+        const slideFrame = document.getElementById('slideFrame');
+        const slideTitle = document.getElementById('slideTitle');
+        const currentSlideSpan = document.getElementById('currentSlide');
+        const totalSlidesSpan = document.getElementById('totalSlides');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        // Initialize
+        totalSlidesSpan.textContent = slides.length;
+        updateSlide();
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                previousSlide();
+            } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown' || e.key === ' ') {
+                nextSlide();
+            }
+        });
+        
+        function updateSlide() {
+            const slide = slides[currentSlideIndex];
+            slideFrame.src = slide.file;
+            slideTitle.textContent = slide.title;
+            currentSlideSpan.textContent = currentSlideIndex + 1;
+            
+            // Update button states
+            prevBtn.disabled = currentSlideIndex === 0;
+            nextBtn.disabled = currentSlideIndex === slides.length - 1;
+        }
+        
+        function previousSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                updateSlide();
+            }
+        }
+        
+        function nextSlide() {
+            if (currentSlideIndex < slides.length - 1) {
+                currentSlideIndex++;
+                updateSlide();
+            }
+        }
+        
+        async function exportToPDF() {
+            const exportBtn = document.querySelector('.export-btn');
+            const originalText = exportBtn.textContent;
+            exportBtn.textContent = 'Generating PDF...';
+            exportBtn.disabled = true;
+            
+            try {
+                const pdfPromises = [];
+                
+                for (let i = 0; i < slides.length; i++) {
+                    const slide = slides[i];
+                    const response = await fetch(slide.file);
+                    const htmlContent = await response.text();
+                    
+                    // Create a temporary div to hold the slide content
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = htmlContent;
+                    
+                    // Extract the main content div
+                    const slideContent = tempDiv.querySelector('div[style*="width: 1280px"]');
+                    if (slideContent) {
+                        // Add page number
+                        const pageNumber = document.createElement('div');
+                        pageNumber.style.cssText = `
+                            position: absolute;
+                            bottom: 20px;
+                            right: 20px;
+                            font-size: 14px;
+                            color: #666;
+                            z-index: 1000;
+                        `;
+                        pageNumber.textContent = `Page ${i + 1}`;
+                        slideContent.appendChild(pageNumber);
+                        
+                        // Configure PDF options
+                        const opt = {
+                            margin: 0,
+                            filename: `slide-${i + 1}.pdf`,
+                            image: { type: 'jpeg', quality: 0.98 },
+                            html2canvas: { 
+                                scale: 2,
+                                useCORS: true,
+                                allowTaint: true
+                            },
+                            jsPDF: { 
+                                unit: 'px', 
+                                format: [1280, 720],
+                                orientation: 'landscape'
+                            }
+                        };
+                        
+                        pdfPromises.push(html2pdf().from(slideContent).set(opt).save());
+                    }
+                }
+                
+                // Wait for all PDFs to be generated
+                await Promise.all(pdfPromises);
+                
+                alert('All slides have been exported as individual PDF files!');
+                
+            } catch (error) {
+                console.error('Error generating PDF:', error);
+                alert('Error generating PDF. Please try again.');
+            } finally {
+                exportBtn.textContent = originalText;
+                exportBtn.disabled = false;
+            }
+        }
+    </script>
+</body>
+</html> 

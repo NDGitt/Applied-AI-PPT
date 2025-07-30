@@ -1,0 +1,3 @@
+'to merge files - npx pdf-merger-js "Exported slides/Page 1-fit-content.pdf" "Exported slides/Page 2-fit-content.pdf" "Exported slides/Page 3-fit-content.pdf" "Exported slides/Page 4-fit-content.pdf" "Exported slides/Page 5-fit-content.pdf" "Exported slides/Page 6-fit-content.pdf" "Exported slides/Page 7-fit-content.pdf" "Exported slides/Page 8-fit-content.pdf" "Exported slides/Page 9-fit-content.pdf" "Exported slides/Page 10-fit-content.pdf" -o "Exported slides/AllSlides-fit-content.pdf"
+'to export files - node export-slide5-fit-content.js
+'to merge files - npx pdf-merger-js "Exported slides/AllSlides-fit-content" "Exported slides/Page 12-fit-content.pdf" "Exported slides/Page 11-fit-content.pdf" -o "Exported slides/AllSlides-fit-content2.pdf"

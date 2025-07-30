@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Journey (15-Week Roadmap)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .berkeley-blue {
+            color: #003262;
+        }
+        .berkeley-gold {
+            color: #FDB515;
+        }
+        .bg-berkeley-blue {
+            background-color: #003262;
+        }
+        .bg-berkeley-gold {
+            background-color: #FDB515;
+        }
+        .timeline-phase {
+            position: relative;
+            padding-top: 50px;
+            border-top: 8px solid;
+        }
+        .timeline-phase:before {
+            content: '';
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: #003262;
+            border: 4px solid #FDB515;
+        }
+        .phase-icon {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+        }
+        .grading-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .progress-bar {
+            height: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-left: 10px;
+            flex-grow: 1;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="w-full min-h-720px bg-white relative overflow-hidden" style="width: 1280px; min-height: 720px;">
+        <!-- Left Border Accent -->
+        <div class="absolute left-0 top-0 bottom-0 bg-berkeley-blue" style="width: 12px;"></div>
+        
+        <!-- Top Logos -->
+        <div class="absolute top-6 right-8">
+            <img src="https://mbagradschools.com/wp-content/uploads/2024/02/Walter-A.-Haas-School-of-Business-logo-1024x880.png.webp" alt="Haas School of Business Logo" class="h-20">
+        </div>
+        
+        <!-- Content Container -->
+        <div class="flex flex-col h-full px-24 py-16">
+            <!-- Title Section -->
+            <div class="mb-8">
+                <h1 class="text-4xl font-bold berkeley-blue pb-2">Learning Journey (15-Week Roadmap)</h1>
+                <div class="w-16 h-1 bg-berkeley-gold"></div>
+            </div>
+            
+            <!-- Main Content - Timeline and Sidebar -->
+            <div class="flex flex-grow space-x-10">
+                <!-- Left Column - Timeline -->
+                <div class="w-3/4">
+                    <div class="flex h-64">
+                        <!-- Phase 1: Ideation -->
+                        <div class="timeline-phase w-1/4" style="border-color: #4B9CD3;">
+                            <div class="phase-icon berkeley-gold">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="font-bold text-lg berkeley-blue">Wk 1-3</h3>
+                                <h4 class="font-semibold text-gray-700">Ideation</h4>
+                                <p class="mt-2 text-sm text-gray-600">Team building, concept scoping, market research</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phase 2: Prototyping -->
+                        <div class="timeline-phase w-1/3" style="border-color: #8BB8E8;">
+                            <div class="phase-icon berkeley-gold">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="font-bold text-lg berkeley-blue">Wk 4-8</h3>
+                                <h4 class="font-semibold text-gray-700">Prototyping Sprints</h4>
+                                <p class="mt-2 text-sm text-gray-600">AI model implementation, UI development, testing cycles</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phase 3: Go-to-Market -->
+                        <div class="timeline-phase w-1/4" style="border-color: #005587;">
+                            <div class="phase-icon berkeley-gold">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="font-bold text-lg berkeley-blue">Wk 9-12</h3>
+                                <h4 class="font-semibold text-gray-700">Go-to-Market</h4>
+                                <p class="mt-2 text-sm text-gray-600">Business model, customer acquisition, mid-term pitch</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Phase 4: VC Prep -->
+                        <div class="timeline-phase w-1/6" style="border-color: #003262;">
+                            <div class="phase-icon berkeley-gold">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="text-center">
+                                <h3 class="font-bold text-lg berkeley-blue">Wk 13-15</h3>
+                                <h4 class="font-semibold text-gray-700">VC Prep</h4>
+                                <p class="mt-2 text-sm text-gray-600">Funding strategy, Demo Day preparation</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Timeline Milestones -->
+                    <div class="mt-8">
+                        <div class="flex justify-between">
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-berkeley-blue"></div>
+                                <p class="text-sm mt-1">Team Formation</p>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-berkeley-blue"></div>
+                                <p class="text-sm mt-1">First Prototype</p>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-berkeley-gold"></div>
+                                <p class="text-sm mt-1">Mid-Pitch</p>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-berkeley-blue"></div>
+                                <p class="text-sm mt-1">Beta Launch</p>
+                            </div>
+                            <div class="flex flex-col items-center">
+                                <div class="h-4 w-4 rounded-full bg-berkeley-gold"></div>
+                                <p class="text-sm mt-1">Demo Day</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column - Sidebar -->
+                <div class="w-1/4 bg-gray-50 p-4 rounded-lg border-l-4 border-berkeley-gold">
+                    <h3 class="text-lg font-bold berkeley-blue mb-3">Program Components</h3>
+                    
+                    <!-- Weekly Speakers -->
+                    <div class="mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-microphone-alt berkeley-gold mr-2"></i>
+                            <h4 class="font-semibold">Weekly Guest Speakers</h4>
+                        </div>
+                        <p class="text-sm text-gray-600 ml-6">Industry experts, VCs, and successful founders share insights</p>
+                    </div>
+                    
+                    <!-- Mentorship -->
+                    <div class="mb-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-users berkeley-gold mr-2"></i>
+                            <h4 class="font-semibold">Mentorship Program</h4>
+                        </div>
+                        <p class="text-sm text-gray-600 ml-6">1:1 guidance from experienced entrepreneurs and AI experts</p>
+                    </div>
+                    
+                    <!-- Grading -->
+                    <div>
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-percentage berkeley-gold mr-2"></i>
+                            <h4 class="font-semibold">Grading Split</h4>
+                        </div>
+                        
+                        <div class="grading-item">
+                            <span class="text-sm w-24">Tech (30%)</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-berkeley-blue" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="grading-item">
+                            <span class="text-sm w-24">Strategy (30%)</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-berkeley-blue" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="grading-item">
+                            <span class="text-sm w-24">Pitch (25%)</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-berkeley-blue" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="grading-item">
+                            <span class="text-sm w-24">Collab (15%)</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill bg-berkeley-blue" style="width: 15%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="mt-8 pt-4 border-t border-gray-200 flex justify-between text-sm text-gray-500">
+                <div>Applied AI for Startup Founders at Haas</div>
+                <div>7</div>
+            </div>
+        </div>
+        
+        <!-- Bottom Accent -->
+        <div class="absolute left-12 right-0 bottom-0 bg-berkeley-gold" style="height: 6px;"></div>
+    </div>
+</body>
+</html>
