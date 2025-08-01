@@ -18,13 +18,28 @@ app.get('/api/slides', async (req, res) => {
         const files = await fs.readdir('.');
         const slideFiles = files.filter(file => 
             file.match(/^Page \d+\.html$/) || file.match(/^Page\d+\.html$/)
-        ).sort((a, b) => {
-            const numA = parseInt(a.match(/\d+/)[0]);
-            const numB = parseInt(b.match(/\d+/)[0]);
-            return numA - numB;
-        });
+        );
         
-        res.json({ slides: slideFiles });
+        // Custom order: Page 11 should come after Page 12 (Next Steps)
+        const customOrder = [
+            'Page 1.html',
+            'Page 2.html', 
+            'Page 3.html',
+            'Page 4.html',
+            'Page 5.html',
+            'Page 6.html',
+            'Page 7.html',
+            'Page 8.html',
+            'Page 9.html',
+            'Page 10.html',
+            'Page 12.html',  // Next Steps
+            'Page11.html'     // Resources & Support (Appendix)
+        ];
+        
+        // Sort files according to custom order
+        const sortedFiles = customOrder.filter(file => slideFiles.includes(file));
+        
+        res.json({ slides: sortedFiles });
     } catch (error) {
         res.status(500).json({ error: 'Failed to get slides list' });
     }
@@ -97,11 +112,26 @@ app.post('/api/export-all', async (req, res) => {
         const files = await fs.readdir('.');
         const slideFiles = files.filter(file => 
             file.match(/^Page \d+\.html$/) || file.match(/^Page\d+\.html$/)
-        ).sort((a, b) => {
-            const numA = parseInt(a.match(/\d+/)[0]);
-            const numB = parseInt(b.match(/\d+/)[0]);
-            return numA - numB;
-        });
+        );
+        
+        // Custom order: Page 11 should come after Page 12 (Next Steps)
+        const customOrder = [
+            'Page 1.html',
+            'Page 2.html', 
+            'Page 3.html',
+            'Page 4.html',
+            'Page 5.html',
+            'Page 6.html',
+            'Page 7.html',
+            'Page 8.html',
+            'Page 9.html',
+            'Page 10.html',
+            'Page 12.html',  // Next Steps
+            'Page11.html'     // Resources & Support (Appendix)
+        ];
+        
+        // Sort files according to custom order
+        const sortedFiles = customOrder.filter(file => slideFiles.includes(file));
 
         const browser = await puppeteer.launch({
             args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -109,7 +139,7 @@ app.post('/api/export-all', async (req, res) => {
 
         const results = [];
 
-        for (const file of slideFiles) {
+        for (const file of sortedFiles) {
             try {
                 const slideNumber = file.match(/\d+/)[0];
                 const page = await browser.newPage();
